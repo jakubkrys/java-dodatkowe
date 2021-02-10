@@ -9,15 +9,15 @@ public class CaesarCipher {
 
         System.out.println("Type the quote to encode (IN CAPITALS): ");         // 10-13 zamiana Stringa na tablicę byte
         String quote = scanner.nextLine();
-        //char[] s = quote.toCharArray();
+        char[] s = quote.toCharArray();
         byte[] d = quote.getBytes(StandardCharsets.UTF_8);
 
-        for (byte a : d) {                                                      // wyświetlenie Stringa zamienionego na tablicę byte
+        for (byte a : d) {                                                      // 15-18 wyświetlenie Stringa zamienionego na tablicę byte
             System.out.print(a+" ");
         }
         System.out.println();
 
-        for (int i = 0; i < d.length; i++) {
+        for (int i = 0; i < d.length; i++) {                                    // 20-28 wyświetlenie zakodowanego Stringa zamienionego na tablicę byte
             if(d[i] < 'A' && d[i] > 'Z'){
                 break;
             } else {
@@ -25,13 +25,21 @@ public class CaesarCipher {
             }
             System.out.print(d[i]+" ");
         }
-        /*for (byte a : d) {
-            if (a < 'A' && a > 'Z'){
+        System.out.println();
+
+        for (char b : s){                                                       // 30-33 wyświetlenie Stringa zamienionego na tablicę char
+            System.out.print(b+" ");
+        }
+        System.out.println();
+
+        for (int i = 0; i < s.length; i++) {                                    // 35-41 wyświetlenie zakodowanego Stringa zamienionego na tablicę char
+            if(s[i] < 'A' && s[i] > 'Z'){
                 break;
             } else {
-                a = (byte) (65+((a-62)%26));
+                s[i] = (char) (65+((s[i]-62)%26));
             }
-            System.out.println(a);
-        }*/
+            System.out.print(s[i]+" ");
+        }
+        System.out.println();
     }
 }
