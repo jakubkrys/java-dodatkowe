@@ -6,40 +6,48 @@ public class CaesarCipher {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
+        Code code = new Code();
+        int option;
 
-        System.out.println("Type the quote to encode (IN CAPITALS): ");         // 10-13 zamiana Stringa na tablicę byte
-        String quote = scanner.nextLine();
-        char[] s = quote.toCharArray();
-        byte[] d = quote.getBytes(StandardCharsets.UTF_8);
+        do {
+            System.out.println("Type the sentence (IN CAPITALS): ");
+            String sentence = scanner.nextLine();
+            char[] s = sentence.toCharArray();
 
-        for (byte a : d) {                                                      // 15-18 wyświetlenie Stringa zamienionego na tablicę byte
-            System.out.print(a+" ");
-        }
-        System.out.println();
+            System.out.println();
+            System.out.println("What you want to do with this sentence?:");
+            System.out.println("1. Encode");
+            System.out.println("2. Decode");
+            System.out.println("9. Quit");
+            option = scanner.nextInt();
+            scanner.nextLine();
 
-        for (int i = 0; i < d.length; i++) {                                    // 20-28 wyświetlenie zakodowanego Stringa zamienionego na tablicę byte
-            if(d[i] < 'A' && d[i] > 'Z'){
-                break;
-            } else {
-                d[i] = (byte) (65+((d[i]-62)%26));
+            switch(option){
+                case 1:
+                    code.encode(sentence);
+                    System.out.println("----- end of encrytpion -----");
+                    System.out.println();
+                    break;
+                case 2:
+                    code.decode(sentence);
+                    System.out.println("----- end of decrytpion -----");
+                    System.out.println();
+                    break;
+                case 9:
+                    break;
             }
-            System.out.print(d[i]+" ");
-        }
-        System.out.println();
+        } while (option != 9);
+        System.out.println("--------------");
+        System.out.println("CODING IS OVER");
+        System.out.println("--------------");
 
-        for (char b : s){                                                       // 30-33 wyświetlenie Stringa zamienionego na tablicę char
-            System.out.print(b+" ");
-        }
-        System.out.println();
-
-        for (int i = 0; i < s.length; i++) {                                    // 35-41 wyświetlenie zakodowanego Stringa zamienionego na tablicę char
+        /*for (int i = 0; i < s.length; i++) {                                    // wyświetlenie zakodowanego Stringa zamienionego na tablicę char za pomocą pętli
             if(s[i] < 'A' && s[i] > 'Z'){
                 break;
             } else {
                 s[i] = (char) (65+((s[i]-62)%26));
             }
-            System.out.print(s[i]+" ");
-        }
-        System.out.println();
+            System.out.print(s[i]+"");
+        }*/
     }
 }
