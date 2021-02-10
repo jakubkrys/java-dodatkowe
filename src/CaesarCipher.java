@@ -12,7 +12,7 @@ public class CaesarCipher {
         do {
             System.out.println("Type the sentence (IN CAPITALS): ");
             String sentence = scanner.nextLine();
-            char[] s = sentence.toCharArray();
+            char[] s = sentence.toCharArray();                                  // zamiana Stringa na tablicę charów
 
             System.out.println();
             System.out.println("What you want to do with this sentence?:");
